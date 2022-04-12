@@ -5,6 +5,6 @@ RUN mkdir /home/gradle/zubale-backend
 WORKDIR /home/gradle/zubale-backend
 COPY . .
 WORKDIR /home/gradle/zubale-backend/
-RUN cd $GITHUB_WORKSPACE
+RUN cd /home/gradle/zubale-backend/
 RUN ./gradlew :services:user:clean :services:user:detekt
 
