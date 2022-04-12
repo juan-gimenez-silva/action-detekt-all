@@ -6,5 +6,6 @@ WORKDIR /home/gradle/zubale-backend
 COPY . .
 WORKDIR /home/gradle/zubale-backend/
 RUN cd /home/gradle/zubale-backend/
+RUN chmod +x ./gradlew
 RUN ./gradlew :services:user:clean :services:user:detekt
 
