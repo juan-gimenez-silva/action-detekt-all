@@ -1,8 +1,7 @@
-FROM gradle:4.10.2-jdk8 as builder
+FROM openjdk:jre-slim
 
-USER 0
-RUN mkdir /home/gradle/zubale-backend
-WORKDIR /home/gradle/zubale-backend
-COPY . .
-WORKDIR /home/gradle/zubale-backend/
-RUN ./gradlew :services:user:detekt
+ADD https://github.com/detekt/detekt/releases/download/1.0.0-RC12/detekt-cli-1.0.0-RC12-all.jar /usr/local/bin/detekt-cli-all.jar
+RUN chmod +x /usr/local/bin/detekt-cli-all.jar
+RUN cd $GITHUB_WORKSPACE
+
+ENTRYPOINT ["java","-jar","/usr/local/bin/detekt-cli-all.jar"]
